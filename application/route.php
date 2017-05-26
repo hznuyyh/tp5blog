@@ -10,20 +10,20 @@
 // +----------------------------------------------------------------------
 use think\Route;
 Route::get('hello/:name','index/index/index');
+
 Route::get('/',function(){
     return redirect('/blog');
 });
 Route::get('blog/:slug','Blog/showPost');
 Route::get('blog','Blog/index');
-
 Route::group('admin',function(){
     Route::resource(':post','admin/Post');
     Route::resource(':tag','admin/Tag');
     Route::get(':upload','admin/Upload');
 });
-Route::get('/auth/login','auth/auth/getLogin');
-Route::post('/auth/login','auth/auth/postLogin');
-Route::get('/auth/logout','auth/auth/getLogout');
+Route::get('/auth/login','auth/Login/index');
+Route::post('/auth/login','auth/Login/getLogin');
+Route::get('/auth/logout','auth/getLogout');
 
 return [
 

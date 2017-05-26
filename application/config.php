@@ -250,5 +250,6 @@ return [
         'AUTH_GROUP_ACCESS' => 'think_auth_group_access', //用户组明细表
         'AUTH_RULE' => 'think_auth_rule', //权限规则表
         'AUTH_USER' => 'think_user'//用户信息表
-    )
+    ),
+    
 ];
