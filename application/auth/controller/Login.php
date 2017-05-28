@@ -1,6 +1,7 @@
 <?php
 
 namespace app\auth\controller;
+use think\response\View;
 use think\Validate;
 use think\Controller;
 use think\Request;
@@ -16,7 +17,8 @@ class Login extends Controller
      */
     public function index()
     {
-        //
+        $this->assign('error','');
+        $this->assign('result',false);
         return $this->fetch('/login');
     }
     public function getLogin(Request $request)
@@ -34,19 +36,18 @@ class Login extends Controller
 
         ];
         $data = [
-            //'_token_' => $request->post('_token_'),
             'username' => $request->post('username'),
             'password' => $request->post('password')
         ];
-        //echo
-        //echo $request->post('_token_');
+
         $validate = new Validate($rules, $messages);
         $result   = $validate->check($data);
-        if(!$result) {
-            return $this->fetch('/login',['error' => $validate->getError(),'result' => $result ]);
+        if(!$result){
+            $this->assign('result',true);
+            $this->assign('error',$validate->getError());
+//
+            return $this->fetch('/login');
         }
-        dump($validate->getError());
-            //echo quotemeta($_POST['username']);
         if($user = User::getByName(quotemeta($_POST['username']))){
           if(strcmp($user['password'],md5(quotemeta($_POST['password'])))){
               Session::set('login_status','succeed');
@@ -58,7 +59,7 @@ class Login extends Controller
         else{
             echo 'no user';
         }
-
+//
 
 
 

@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>{$Think.config.myblog.title} Admin</title>
-
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
         <!--[if lt IE 9]>
     <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -28,25 +25,25 @@
             <a class="navbar-brand" href="#">{$Think.config.myblog.title} Admin</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-menu">
-
-
         </div>
     </div>
 </nav>
 <div class="container">
-    {php} $result = false; $error = ''{/php}
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
+                    {if $result}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>{$error}</strong>
+                    </div>
+                    {/if}
                     <form class="form-horizontal" role="form" method="post" action="/auth/login">
                         <input type="hidden" name="__token__" value="{$Request.token}" />
                         <div class="form-group">
                             <label class="col-md-4 control-label">Username</label>
-                            {if $result} {$error}
-                            {else /}{$error}
-                            {/if}
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="username"  placeholder="Username" autofocus >
                             </div>
@@ -77,13 +74,7 @@
         </div>
     </div>
 </div>
-
-
-
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-
-
 </body>
 </html>

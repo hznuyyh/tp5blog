@@ -5,7 +5,9 @@
 </head>
 <body>
 <div class="container">
-    <h1>{$Think.config.myblog.title}</h1>
+    <h1>{$Think.config.myblog.title}
+    <a href="/auth/login" class="pull-right btn-sm" >登录</a>
+        </h1>
     <hr>
     <ul>
         <div class="container">
