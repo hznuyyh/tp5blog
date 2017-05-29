@@ -30,7 +30,25 @@
 			<a class="navbar-brand" href="#">{$Think.config.myblog.title}  Admin</a>
 		</div>
 		<div class="collapse navbar-collapse" id="navbar-menu">
-			{include file="admin/partials/navbar"}
+			<ul class="nav navbar-nav">
+				<li><a href="/">Blog Home</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				{if $Think.session.login_status == 'succeed'}
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+					   aria-expanded="false">
+						{$Think.session.user_name}
+						<span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/auth/logout">Logout</a></li>
+					</ul>
+				</li>
+				{else /}
+				<li><a href="/auth/login"></a>登录</li>
+				{/if}
+			</ul>
 		</div>
 	</div>
 </nav>

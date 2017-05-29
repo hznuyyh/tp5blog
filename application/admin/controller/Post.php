@@ -16,8 +16,7 @@ class post extends Controller
     public function index()
     {
         //
-        
-        return $this->fetch('admin/layout');
+        return $this->fetch('/layout');
     }
 
     /**

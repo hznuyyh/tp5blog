@@ -35,7 +35,7 @@
                 <div class="panel-heading">Login</div>
                 <div class="panel-body">
                     {if $result}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div class="alert alert-danger alert-dismissible " role="alert" >
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <strong>{$error}</strong>
                     </div>

@@ -1,6 +1,7 @@
 <?php
 
 namespace app\auth\controller;
+use app\admin\controller\post;
 use think\response\View;
 use think\Validate;
 use think\Controller;
@@ -51,13 +52,22 @@ class Login extends Controller
         if($user = User::getByName(quotemeta($_POST['username']))){
           if(strcmp($user['password'],md5(quotemeta($_POST['password'])))){
               Session::set('login_status','succeed');
+              Session::set('user_name',$request->post('username'));
+              return redirect('/admin/post');
           }
           else{
               Session::set('login_status','defeat');
+              $this->assign('result',true);
+              $this->assign('error','Error Password,please try again');
+//
+              return $this->fetch('/login');
           }
         }
         else{
-            echo 'no user';
+            $this->assign('result',true);
+            $this->assign('error','Not find this user');
+//
+            return $this->fetch('/login');
         }
 //
 
@@ -65,6 +75,11 @@ class Login extends Controller
 
         //$password = md5($_POST['password']);
 
+    }
+    public function getLogout(){
+        Session::delete('login_status');
+        Session::delete('user_name');
+        return redirect('/auth/login');
     }
 
     /**

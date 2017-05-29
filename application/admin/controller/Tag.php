@@ -15,6 +15,7 @@ class tag extends Controller
     public function index()
     {
         //
+        return 'tag';
     }
 
     /**

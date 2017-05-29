@@ -23,7 +23,7 @@ Route::group('admin',function(){
 });
 Route::get('/auth/login','auth/Login/index');
 Route::post('/auth/login','auth/Login/getLogin');
-Route::get('/auth/logout','auth/getLogout');
+Route::get('/auth/logout','auth/login/getLogout');
 
 return [
 
