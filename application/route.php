@@ -16,11 +16,16 @@ Route::get('/',function(){
 });
 Route::get('blog/:slug','Blog/showPost');
 Route::get('blog','Blog/index');
+
 Route::group('admin',function(){
+    Route::get('tag/create','admin/Tag/create');
+    Route::get('tag','admin/Tag/index');
+    Route::post('tag','admin/Tag/store');
     Route::resource(':post','admin/Post');
-    Route::resource(':tag','admin/Tag');
-    Route::get(':upload','admin/Upload');
+    Route::get(':upload','admin/upload');
 });
+
+//Route::resource('admin/tag','admin/controller/Tag');
 Route::get('/auth/login','auth/Login/index');
 Route::post('/auth/login','auth/Login/getLogin');
 Route::get('/auth/logout','auth/login/getLogout');

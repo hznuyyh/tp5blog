@@ -6,8 +6,7 @@
 <body>
 <div class="container">
     <h1>{$Think.config.myblog.title}
-    <a href="/auth/login" class="pull-right btn-sm" >登录</a>
-        </h1>
+    </h1>
     <hr>
     <ul>
         <div class="container">
@@ -26,5 +25,7 @@
     </ul>
     <hr>
 </div>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </body>
 </html>

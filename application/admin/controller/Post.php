@@ -4,7 +4,8 @@ namespace app\admin\controller;
 
 use think\Controller;
 use think\Request;
-use tp5auth\auth\Auth;
+use think\Session;
+
 
 class post extends Controller
 {
@@ -16,7 +17,13 @@ class post extends Controller
     public function index()
     {
         //
-        return $this->fetch('/layout');
+        if(Session::get('login_status')=='succeed') {
+            return $this->fetch('/layout');
+        }
+        else{
+            return redirect('/auth/login');
+        }
+
     }
 
     /**

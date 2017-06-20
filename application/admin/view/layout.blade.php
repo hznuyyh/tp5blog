@@ -8,8 +8,6 @@
 	<title>{$Think.config.myblog.title} Admin</title>
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
-
 	<!--[if lt IE 9]>
 	<script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -33,6 +31,9 @@
 			<ul class="nav navbar-nav">
 				<li><a href="/">Blog Home</a></li>
 			</ul>
+			<ul class="nav navbar-nav">
+				<li><a href="/admin/tag">Tag</a></li>
+			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				{if $Think.session.login_status == 'succeed'}
 				<li class="dropdown">
@@ -46,19 +47,15 @@
 					</ul>
 				</li>
 				{else /}
-				<li><a href="/auth/login"></a>登录</li>
+				<li><a href="/auth/login">登录</a></li>
 				{/if}
 			</ul>
 		</div>
 	</div>
 </nav>
 
-
-
 <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-
 
 </body>
 </html>

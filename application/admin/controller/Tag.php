@@ -3,10 +3,19 @@
 namespace app\admin\controller;
 
 use think\Controller;
-use think\Request;
 
-class tag extends Controller
+use think\Model;
+class Tag extends Controller
 {
+    protected $fields = [
+        'tag' => '',
+        'title' => '',
+        'subtitle' => '',
+        'meta_description' => '',
+        'page_image' => '',
+        'layout' => 'blog.layouts.index',
+        'reverse_direction' => 0,
+    ];
     /**
      * 显示资源列表
      *
@@ -15,72 +24,24 @@ class tag extends Controller
     public function index()
     {
         //
-        return 'tag';
+       $tags = \app\admin\model\Tag::all();
+      //  var_dump($tags);
+       return $this->fetch('tag/tag',compact('tags'));
     }
-
-    /**
-     * 显示创建资源表单页.
-     *
-     * @return \think\Response
-     */
     public function create()
     {
-        //
+        $data = [];
+        return $this->fetch('tag/create',compact('data'));
     }
 
-    /**
-     * 保存新建的资源
-     *
-     * @param  \think\Request  $request
-     * @return \think\Response
-     */
-    public function save(Request $request)
+    public function store()
     {
-        //
+       $rules =[
+           'tag' => 'required|min:2|max:3',
+           'title' => 'required|min:2|max:16',
+           'subtitle' => 'required|min:2|max:24',
+           'description'=>"required|min:6|max:120",
+       ] ;
     }
 
-    /**
-     * 显示指定的资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function read($id)
-    {
-        //
-    }
-
-    /**
-     * 显示编辑资源表单页.
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * 保存更新的资源
-     *
-     * @param  \think\Request  $request
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * 删除指定资源
-     *
-     * @param  int  $id
-     * @return \think\Response
-     */
-    public function delete($id)
-    {
-        //
-    }
 }

@@ -18,6 +18,9 @@ class Login extends Controller
      */
     public function index()
     {
+        if(Session::get('login_status')=='succeed'){
+            return redirect('/admin/post');
+        }
         $this->assign('error','');
         $this->assign('result',false);
         return $this->fetch('/login');
@@ -69,12 +72,6 @@ class Login extends Controller
 //
             return $this->fetch('/login');
         }
-//
-
-
-
-        //$password = md5($_POST['password']);
-
     }
     public function getLogout(){
         Session::delete('login_status');
